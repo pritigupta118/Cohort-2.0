@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<br lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<script>
+  async function calculate () {
+const a = parseInt(document.getElementById("num1").value)
+const b = parseInt(document.getElementById("num2").value)
+const c = parseInt(document.getElementById("num3").value)
+
+const data = await fetch("http://localhost:3000/interest?principal=" + a + "&rate=" + b + "&time=" + c)
+const response = await data.json()
+
+document.getElementById("total").innerHTML = response.total
+document.getElementById("interest").innerHTML = response.interest
+  }
+</script>
+<br>
+  <input id="num1" type="text" placeholder="enter principle"><br></br>
+  <input id="num2" type="text" placeholder="enter rate"><br></br>
+  <input id="num3" type="text" placeholder="enter time"><br></br>
+  <button onclick="calculate()">Click me</button><br></br>
+  <div>Total:<span id="total"></span></div><br>
+  <div>Interest:<span id="interest"></span></div>
+</body>
+</html>

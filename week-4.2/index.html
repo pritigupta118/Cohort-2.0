@@ -1,0 +1,48 @@
+// CREATING A TODO TO UNDERSTAND DOM
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<script>
+  let glibalId = 1
+  function addTodo(){
+
+     const title = document.getElementById("title").value
+     const description = document.getElementById("description").value
+     
+    const innerDiv1 = document.createElement('div')
+    innerDiv1.innerHTML = title
+    const innerDiv2 = document.createElement('div')
+    innerDiv2.innerHTML = description
+    const innerDiv3 = document.createElement('button')
+    innerDiv3.innerHTML = "Mark as done"
+
+    innerDiv3.onclick = function () {
+      innerDiv1.style.textDecoration = "line-through"
+      innerDiv2.style.textDecoration = "line-through"
+      innerDiv3.innerHTML = "Done"
+    }
+
+    const outerDiv = document.createElement("div")
+    outerDiv.appendChild(innerDiv1)
+    outerDiv.appendChild(innerDiv2)
+    outerDiv.appendChild(innerDiv3)
+
+    document.getElementById("container").appendChild(outerDiv)
+
+    document.getElementById("title").value = "";
+    document.getElementById("description").value = "";
+  
+  }
+</script>
+<body>
+  <input id="title" type="text" placeholder="title">
+  <input id="description" type="text" placeholder="description">
+  <button onclick="addTodo()">Add todo</button>
+  <div id="container"></div>
+</body>
+</html>
